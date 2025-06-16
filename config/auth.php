@@ -36,10 +36,14 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+ 'pelanggans' => [
+        'driver' => 'session',
+        'provider' => 'pelanggans',
+    ],
+    'admin' => [
+        'driver' => 'session',
+        'provider' => 'admin',
+    ],
     ],
 
     /*
@@ -60,9 +64,13 @@ return [
     */
 
     'providers' => [
-        'users' => [
+         'pelanggans' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => env('AUTH_MODEL', App\Models\Pelanggans::class),
+        ],
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => env('AUTH_MODEL', App\Models\Admin::class),
         ],
 
         // 'users' => [
