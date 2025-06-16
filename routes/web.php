@@ -8,7 +8,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\penjualanController;
-use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', [customerPageController::class, 'index']);
 Route::get('/allproduct', [KayuController::class, 'index']);
