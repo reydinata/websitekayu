@@ -50,3 +50,9 @@ Route::get('dashboard', [DashboardController::class,'index'])->middleware('auth:
 Route::resource('product', KayuAdminController::class)->middleware('auth:admin');
 Route::resource('about', AboutController::class)->middleware('auth:admin');
 Route::resource('penjualan', penjualanController::class)->middleware('auth:admin');
+Route::get('/clear-cache', function () {
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    return 'Cache cleared';
+});
