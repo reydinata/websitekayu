@@ -54,6 +54,5 @@ Route::resource('penjualan', penjualanController::class)->middleware('auth:admin
 Route::get('/clear-cache', function () {
     Artisan::call('config:clear');
     Artisan::call('cache:clear');
-
     return 'Cache cleared';
 });
