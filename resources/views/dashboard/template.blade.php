@@ -55,7 +55,7 @@
           <div class="logo-header" data-background-color="dark">
             <a href="index.html" class="logo">
               <img
-                src="{{asset('adminview3/assets/img/kaiadmin/Woodland2.svg')}}"
+                src="{{asset('adminview3/assets/img/kaiadmin/logo_light.svg')}}"
                 alt="navbar brand"
                 class="navbar-brand"
                 height="20"
