@@ -527,22 +527,6 @@ h6 {
     display: block;
     background-color: rgba(33, 37, 41, 0.03);
   }
- .navmenu li .cta-btn {
-    color: black !important;
-    background-color: transparent !important;
-    border: 2px solid black !important;
-    padding: 8px 16px;
-    border-radius: 6px;
-    display: inline-block;
-    text-align: center;
-  }
-
-  .navmenu li .cta-btn:hover {
-    background-color: black !important;
-    color: white !important;
-  }
-
-
   .mobile-nav-active {
     overflow: hidden;
   }
@@ -567,6 +551,18 @@ h6 {
 
   .mobile-nav-active .navmenu>ul {
     display: block;
+  }
+}
+@media (max-width: 1199px) {
+  .navmenu .cta-btn {
+    color: black !important;
+    background-color: transparent !important;
+    border: 2px solid black !important;
+  }
+
+  .navmenu .cta-btn:hover {
+    background-color: black !important;
+    color: white !important;
   }
 }
 
