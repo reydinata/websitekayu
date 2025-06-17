@@ -59,7 +59,7 @@
                 alt="navbar brand"
                 class="navbar-brand"
                 width="136"
-                height="80"
+                height="70"
               />
             </a>
             <div class="nav-toggle">
