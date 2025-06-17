@@ -58,6 +58,7 @@
                 src="{{asset('adminview3/assets/img/kaiadmin/Woodland3.svg')}}"
                 alt="navbar brand"
                 class="navbar-brand"
+                width="136"
                 height="20"
               />
             </a>
