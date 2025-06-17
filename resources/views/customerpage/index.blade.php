@@ -34,7 +34,7 @@
     border: 2px solid black !important;
     padding: 8px 16px;
     border-radius: 6px;
-    display: inline-block;
+    display: flex;
     text-align: center;
     margin-left:5px;
   }
