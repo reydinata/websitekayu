@@ -47,74 +47,62 @@
         <h1 class="sitename">Woodland</h1>
       </a>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero" class="active">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Products</a></li>
-          <li><a href="#rating">Rating</a></li>
-          <li><a href="#team">Team</a></li>
-          {{-- <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li> --}}
-          <li><a href="#contact">Contact</a></li>
+<nav id="navmenu" class="navmenu">
 
+  <ul>
+    <li><a href="#hero" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Products</a></li>
+    <li><a href="#rating">Rating</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact">Contact</a></li>
 
-
-@auth('admin')
-<li class="dropdown"><a href="#"><span>Welcome, Admin {{ auth('admin')->user()->username }}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="/dashboard">My Dashboard</a></li>
-               <li>
-    <li>
-  <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color: black;">
-    Logout
-  </a>
-
-  <form id="logout-form" action="/logout" method="POST" style="display: none;">
-    @csrf
-  </form>
-</li>
-
+    @auth('admin')
+    <li class="dropdown">
+      <a href="#">
+        <span>Welcome, Admin {{ auth('admin')->user()->username }}</span>
+        <i class="bi bi-chevron-down toggle-dropdown"></i>
+      </a>
+      <ul>
+        <li><a href="/dashboard">My Dashboard</a></li>
+        <li>
+          <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Logout
+          </a>
+          <form id="logout-form" action="/logout" method="POST" style="display: none;">
+            @csrf
+          </form>
+        </li>
+      </ul>
     </li>
-            </ul>
-          </li>
-           </ul>
 
-
-@elseif(auth('pelanggans')->check())
-<li class="dropdown"><a href="#"><span>Welcome, {{ auth('pelanggans')->user()->nama_pelanggan }}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
- <li><a href="daftarpembelian">Buying List</a></li>
-               <li>
-     <li>
-  <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" style="color: black;">
-    Logout
-  </a>
-
-  <form id="logout-form" action="/logout" method="POST" style="display: none;">
-    @csrf
-  </form>
-</li>
-
+    @elseif(auth('pelanggans')->check())
+    <li class="dropdown">
+      <a href="#">
+        <span>Welcome, {{ auth('pelanggans')->user()->nama_pelanggan }}</span>
+        <i class="bi bi-chevron-down toggle-dropdown"></i>
+      </a>
+      <ul>
+        <li><a href="/daftarpembelian">Buying List</a></li>
+        <li>
+          <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Logout
+          </a>
+          <form id="logout-form" action="/logout" method="POST" style="display: none;">
+            @csrf
+          </form>
+        </li>
+      </ul>
     </li>
-            </ul>
-          </li>
-           </ul>
 
+    @else
+    <li><a class="cta-btn" href="/login">Login</a></li>
+    @endauth
+  </ul>
 
-@else
-    {{-- Jika belum login --}}
+  <!-- Tombol toggle menu mobile -->
+  <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
 
-       <a class="cta-btn" href="/login">Login</a>
-
-@endauth
-<i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
 </nav>
 
 
