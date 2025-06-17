@@ -36,12 +36,12 @@
     border-radius: 6px;
     display: inline-block;
     text-align: center;
-    margin-left:5px
+    margin-left:10px;
   }
 
   .navmenu li a.cta-btn:hover {
-    background-color: black !important;
-    color: #FD6A02 !important;
+    background-color:  #FD6A02 !important;
+    color: white !important;
   }
 }
 
