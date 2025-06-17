@@ -96,7 +96,8 @@
     </li>
 
     @else
-    <li><a class="cta-btn" href="/login">Login</a></li>
+    <li><a class="cta-btn" id="mobile-login" href="/login">Login</a></li>
+      
     @endauth
   </ul>
 
