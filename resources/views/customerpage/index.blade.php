@@ -35,6 +35,8 @@
     padding: 8px 16px;
     border-radius: 6px;
     display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     margin-left:5px;
   }
