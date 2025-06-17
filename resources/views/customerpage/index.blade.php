@@ -36,7 +36,7 @@
     border-radius: 6px;
     display: inline-block;
     text-align: center;
-    margin-left:10px;
+    margin-left:5px;
   }
 
   .navmenu li a.cta-btn:hover {
