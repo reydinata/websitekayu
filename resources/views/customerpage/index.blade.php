@@ -36,11 +36,12 @@
     border-radius: 6px;
     display: inline-block;
     text-align: center;
+    margin-left:5px
   }
 
   .navmenu li a.cta-btn:hover {
     background-color: black !important;
-    color: white !important;
+    color: #FD6A02 !important;
   }
 }
 
