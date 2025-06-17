@@ -26,7 +26,25 @@
 
   <!-- Main CSS File -->
   <link href="{{ asset('customerview2/assets/css/main.css')}}" rel="stylesheet">
+<style>
+    @media (max-width: 1199px) {
+  .navmenu li a.cta-btn {
+    color: black !important;
+    background-color: transparent !important;
+    border: 2px solid black !important;
+    padding: 8px 16px;
+    border-radius: 6px;
+    display: inline-block;
+    text-align: center;
+  }
 
+  .navmenu li a.cta-btn:hover {
+    background-color: black !important;
+    color: white !important;
+  }
+}
+
+</style>
   <!-- =======================================================
   * Template Name: Dewi
   * Template URL: https://bootstrapmade.com/dewi-free-multi-purpose-html-template/
