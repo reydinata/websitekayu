@@ -527,15 +527,12 @@ h6 {
     display: block;
     background-color: rgba(33, 37, 41, 0.03);
   }
-.navmenu .cta-btn {
+#mobile-login {
   color: black !important;
-  background-color: transparent !important;
   border: 2px solid black !important;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-align: center;
-  display: inline-block;
+  background-color: transparent !important;
 }
+
 
   .mobile-nav-active {
     overflow: hidden;
