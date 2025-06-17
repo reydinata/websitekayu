@@ -532,10 +532,6 @@ h6 {
   text-align: center;
 }
 
-.navmenu li a.cta-btn[href="/login"]:hover {
-  background-color: black !important;
-  color: white !important;
-}
 
   .navmenu .dropdown>.dropdown-active {
     display: block;
