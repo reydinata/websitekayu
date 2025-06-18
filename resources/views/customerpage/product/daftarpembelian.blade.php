@@ -147,7 +147,7 @@
             <span class="text-muted">-</span>
         @endif
     </td>
-<td></td>
+
          </tr>
        @endforeach
      @else
