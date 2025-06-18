@@ -63,53 +63,116 @@
       margin-top: 15px;
       color: #555;
     }
-    #roleSelect{
+
+    #roleSelect {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
       border: 1px solid #A0522D;
       border-radius: 5px;
     }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 20px;
+      border: 2px solid #f44336;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-content img {
+      width: 80px;
+      margin-bottom: 10px;
+    }
+
+    .modal-content h3 {
+      color: #f44336;
+      margin-bottom: 10px;
+    }
+
+    .close-btn {
+      background-color: #f44336;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .close-btn:hover {
+      background-color: #d32f2f;
+    }
   </style>
 </head>
 <body>
-@if (session('loginError'))
-    <div style="color: red; text-align: center; margin-bottom: 10px;">
-        {{ session('loginError') }}
-    </div>
-@endif
 
   <div class="login-container">
     <h2>Login Woodland</h2>
-<form method="POST" action="/login">
-    @csrf
-    <select name="role" id="roleSelect" required>
-        <option value="pelanggans">Login as Pelanggan</option>
-        <option value="admin">Login as Admin</option>
-    </select>
+    <form method="POST" action="/login">
+        @csrf
+        <select name="role" id="roleSelect" required>
+            <option value="pelanggans">Login as Pelanggan</option>
+            <option value="admin">Login as Admin</option>
+        </select>
 
-    <input type="text" name="email" placeholder="Email atau Username" required>
-    <input type="password" name="password" placeholder="Password" required>
+        <input type="text" name="email" placeholder="Email atau Username" required>
+        <input type="password" name="password" placeholder="Password" required>
 
-    <button type="submit">Log In</button>
-</form>
+        <button type="submit">Log In</button>
+    </form>
 
-<p id="signupText">Don't have an account? <a href="register">Sign Up</a> </p>
-
+    <p id="signupText">Don't have an account? <a href="register">Sign Up</a> </p>
   </div>
 
-</body>
+  <!-- Modal for login error -->
+  @if (session('loginError'))
+  <div id="errorModal" class="modal">
+    <div class="modal-content">
+      <img src="https://cdn-icons-png.flaticon.com/512/463/463612.png" alt="Error Icon">
+      <h3>Login Gagal</h3>
+      <p>Username atau Password salah</p>
+      <button class="close-btn" onclick="closeModal()">Tutup</button>
+    </div>
+  </div>
+  @endif
 
-<script>
+  <script>
     document.getElementById('roleSelect').addEventListener('change', function () {
         const selectedRole = this.value;
         const signupText = document.getElementById('signupText');
 
-        if (selectedRole === 'admin') {
-            signupText.style.display = 'none';
-        } else {
-            signupText.style.display = 'block';
-        }
+        signupText.style.display = (selectedRole === 'admin') ? 'none' : 'block';
     });
-</script>
+
+    function closeModal() {
+      document.getElementById("errorModal").style.display = "none";
+    }
+
+    // Show modal if loginError session exists
+    @if (session('loginError'))
+      window.onload = function() {
+        document.getElementById("errorModal").style.display = "block";
+      };
+    @endif
+  </script>
+
+</body>
 </html>
