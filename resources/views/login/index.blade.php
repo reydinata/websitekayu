@@ -33,8 +33,8 @@
       margin-bottom: 20px;
     }
 
-    .login-container input[type="text"],
-    .login-container input[type="password"] {
+    .login-container input,
+    .login-container select {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
@@ -62,14 +62,6 @@
       font-size: 0.9em;
       margin-top: 15px;
       color: #555;
-    }
-
-    #roleSelect {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #A0522D;
-      border-radius: 5px;
     }
 
     /* Modal styles */
@@ -126,24 +118,20 @@
 
   <div class="login-container">
     <h2>Login Woodland</h2>
-    <form method="POST" action="/login">
+    <form id="loginForm">
         @csrf
         <select name="role" id="roleSelect" required>
             <option value="pelanggans">Login as Pelanggan</option>
             <option value="admin">Login as Admin</option>
         </select>
-
         <input type="text" name="email" placeholder="Email atau Username" required>
         <input type="password" name="password" placeholder="Password" required>
-
         <button type="submit">Log In</button>
     </form>
-
-    <p id="signupText">Don't have an account? <a href="register">Sign Up</a> </p>
+    <p id="signupText">Don't have an account? <a href="register">Sign Up</a></p>
   </div>
 
   <!-- Modal for login error -->
-  @if (session('loginError'))
   <div id="errorModal" class="modal">
     <div class="modal-content">
       <img src="https://cdn-icons-png.flaticon.com/512/463/463612.png" alt="Error Icon">
@@ -152,26 +140,43 @@
       <button class="close-btn" onclick="closeModal()">Tutup</button>
     </div>
   </div>
-  @endif
 
   <script>
     document.getElementById('roleSelect').addEventListener('change', function () {
-        const selectedRole = this.value;
-        const signupText = document.getElementById('signupText');
-
-        signupText.style.display = (selectedRole === 'admin') ? 'none' : 'block';
+      const signupText = document.getElementById('signupText');
+      signupText.style.display = this.value === 'admin' ? 'none' : 'block';
     });
 
     function closeModal() {
       document.getElementById("errorModal").style.display = "none";
     }
 
-    // Show modal if loginError session exists
-    @if (session('loginError'))
-      window.onload = function() {
-        document.getElementById("errorModal").style.display = "block";
-      };
-    @endif
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const formData = new FormData(form);
+
+      fetch("/login", {
+        method: "POST",
+        headers: {
+          'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          window.location.href = data.redirect;
+        } else {
+          document.getElementById("errorModal").style.display = "block";
+        }
+      })
+      .catch(error => {
+        console.error("Login error:", error);
+        alert("Terjadi kesalahan. Silakan coba lagi.");
+      });
+    });
   </script>
 
 </body>
