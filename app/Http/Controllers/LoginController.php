@@ -50,7 +50,6 @@ public function autentikasi(Request $request)
     $role = $credentials['role'];
     $guard = $role;
 
-    // Field login berdasarkan role
     $loginField = $role === 'admin' ? 'username' : 'email_pelanggan';
 
     $attemptCredentials = [
@@ -58,15 +57,19 @@ public function autentikasi(Request $request)
         'password' => $credentials['password'],
     ];
 
-    // Debug jika gagal
-    logger()->info('Trying login', $attemptCredentials);
-
     if (Auth::guard($guard)->attempt($attemptCredentials)) {
         $request->session()->regenerate();
-        return redirect()->intended('/');
+
+        return response()->json([
+            'success' => true,
+            'redirect' => $role === 'admin' ? '/' : '/'
+        ]);
     }
 
-    return back()->with('loginError', 'Login gagal. Periksa kembali data Anda.');
+    return response()->json([
+        'success' => false,
+        'message' => 'Email atau password salah.'
+    ]);
 }
 
 
